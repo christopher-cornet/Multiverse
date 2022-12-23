@@ -1,0 +1,31 @@
+Créer une VM sans interface graphique.
+
+Mettre à jour les paquets:
+sudo apt update
+
+Installer le paquet ufw:
+sudo apt install ufw
+
+Toutes les machines sont accessibles via SSH:
+sudo ufw allow ssh
+
+Désactiver l'accès au ssh pour le client:
+sudo ufw disable ssh 10.10.1.4
+
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow ftp
+
+sudo ufw allow 22/tcp
+
+Configurer l'interface réseau:
+sudo nano /etc/network/interfaces
+auto eth0
+iface eth0 inet static
+address 10.0.1.1
+netmask 255.255.255.0
+gateway 10.0.1.1
+
+Démarrer le serveur:
+sudo systemctl start ufw
+sudo ufw enable
